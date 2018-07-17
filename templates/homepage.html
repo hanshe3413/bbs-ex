@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>Title</title>
+    <!-- Bootstrap -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        li {
+            list-style-type: none;
+        }
+
+        ul {
+            padding-left: 0px;
+            padding-right: 20px;
+        }
+
+        {#.list-group-item>li:hover,.list-group-item>li:focus {#}
+        {#    background-color: #23527c;#}
+        {
+        #}#}
+        .info {
+            margin-top: 10px;
+        }
+
+        .img_box {
+
+            float: left;
+        }
+
+        .img_box>a>img {
+            border: 0;
+            height: 48px;
+            width: 64px;
+        }
+
+        .company_list > li {
+            height: 50px;
+        }
+        .company_list{
+            padding: 0px;
+        }
+        .content>p{font-size: small}
+
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">博客园</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">首页 <span class="sr-only">(current)</span></a></li>
+                <li><a href="#">博客</a></li>
+                <li><a href="#">学院</a></li>
+                <li><a href="#">下载</a></li>
+                <li><a href="#">论坛</a></li>
+                <li><a href="#">商城</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">其他 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">活动</a></li>
+                        <li><a href="#">招聘</a></li>
+                        <li><a href="#">VIP</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">联系我们</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <form class="navbar-form navbar-left" action="/not_found/">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="搜博主文章">
+                </div>
+                <button type="submit" class="btn btn-default">搜索</button>
+            </form>
+            <ul class="nav navbar-nav navbar-right">
+                {% if request.user.username %}
+                    <li><a href="#">{{ request.user.username }}</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">个人选项 <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">个人资料</a></li>
+                            <li><a href="#">设置</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="/logout/">退出登录</a></li>
+                        </ul>
+                    </li>
+                {% else %}
+                    <li><a href="/login/">登录</a></li>
+                    <li><a href="/register/">注册</a></li>
+                {% endif %}
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+{#头部导航条完了#}
+
+
+<div class="container-fluid">
+    <div class="row">
+
+
+        <div class="col-md-2">
+            <div class="list-group">
+                <ul>
+                    <li class="active"><a href="#" class="list-group-item active">推荐</a></li>
+                    <li class="active"><a href="#" class="list-group-item ">最新文章</a></li>
+                    <li class="active"><a href="#" class="list-group-item ">关注</a></li>
+                    <li class="active"><a href="#" class="list-group-item ">资讯</a></li>
+                    <li class="active"><a href="#" class="list-group-item ">人工智能</a></li>
+                    <li class="active"><a href="#" class="list-group-item ">云计算/大数据</a></li>
+                    <li class="active"><a href="#" class="list-group-item ">区块链</a></li>
+                    <li class="active"><a href="#" class="list-group-item ">数据库</a></li>
+                    <li class="active"><a href="#" class="list-group-item ">程序人生</a></li>
+                    <li class="active"><a href="#" class="list-group-item ">游戏开发</a></li>
+                    <li class="active"><a href="#" class="list-group-item ">研发管理</a></li>
+                    <li class="active"><a href="#" class="list-group-item ">前端</a></li>
+                    <li class="active"><a href="#" class="list-group-item ">移动开发</a></li>
+                    <li class="active"><a href="#" class="list-group-item ">物联网</a></li>
+                    <li class="active"><a href="#" class="list-group-item ">运维</a></li>
+                    <li class="active"><a href="#" class="list-group-item ">计算机基础</a></li>
+                    <li class="active"><a href="#" class="list-group-item ">编程语言</a></li>
+                    <li class="active"><a href="#" class="list-group-item ">架构</a></li>
+                    <li class="active"><a href="#" class="list-group-item ">音视频开发</a></li>
+                    <li class="active"><a href="#" class="list-group-item ">安全</a></li>
+                    <li class="active"><a href="#" class="list-group-item ">其他</a></li>
+                </ul>
+            </div>
+        </div>
+
+        {#    文章标签列#}
+        <div class="col-md-7">
+            <div class="article_list">
+                {% for article in article_list %}
+                    <div class="article_item">
+                        <h5><a href="">{{ article.title }}</a></h5>
+                        <div>
+                            <span class="media-left"><a href=""><img width="60" height="60"
+                                                                     src="http://img4.imgtn.bdimg.com/it/u=1139417353,2641492575&fm=27&gp=0.jpg"
+                                                                     alt=""></a></span>
+
+                            <span class="media-right small desc ">
+                              {{ article.desc }}
+                          </span>
+                        </div>
+
+                        <div class="info small">
+                            <span><a href="">{{ article.user.username }}</a>&nbsp</span>&nbsp发布于
+                            <span>{{ article.create_time|date:'Y-m-d H:i' }}</span>
+                            <div class="pull-right">
+                                <span class="glyphicon glyphicon-comment"></span>&nbsp<a
+                                    href="">评论({{ article.comment_count }})</a>&nbsp&nbsp
+                                <span class="glyphicon glyphicon-thumbs-up"></span>&nbsp<a
+                                    href="">点赞({{ article.up_count }})</a>
+                            </div>
+
+                        </div>
+                    </div>
+                    <hr>
+                {% endfor %}
+            </div>
+        </div>
+
+        {#    以下全是广告#}
+        <div class="col-md-3">
+
+            <div class="right_box">
+                <h3 class="feed_new_tit">
+                    <span class="line"></span><span class="txt">今日推荐</span>
+                </h3>
+                <div class="feed_company csdn-tracking-statistics" data-mod="popu_474" data-dsm="post">
+                    <ul class="company_list">
+                        <li>
+                            <div class="img_box"><a
+                                    href="https://blog.csdn.net/blockchain_lemon/article/details/80971099"
+                                    target="_blank"><img
+                                    src="https://csdnimg.cn/feed/20180710/54cd7259a196c984e7ae0e6b52fb6593.png?x-oss-process=image/resize,h_64"
+                                    alt=""></a></div>
+                            <div class="content">
+                                <h5 class="company_name"><a
+                                        href="https://blog.csdn.net/blockchain_lemon/article/details/80971099"
+                                        target="_blank">两年洗钱80亿，交易所是黑客洗钱幕后推手还是受害者</a></h5>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img_box"><a
+                                    href="https://blog.csdn.net/blockchain_lemon/article/details/80975640"
+                                    target="_blank"><img
+                                    src="https://csdnimg.cn/feed/20180710/9f0fe874995a3bcc138fc9dc5f65865e.png?x-oss-process=image/resize,h_64"
+                                    alt=""></a></div>
+                            <div class="content">
+                                <h5 class="company_name"><a
+                                        href="https://blog.csdn.net/blockchain_lemon/article/details/80975640"
+                                        target="_blank">1分钟链圈 | 预警！慢雾区发布以太坊代币漏洞</a></h5>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img_box"><a href="https://edu.csdn.net/huiyiCourse/detail/819"
+                                                    target="_blank"><img
+                                    src="https://csdnimg.cn/feed/20180704/c34856eb4ed31e1a56fe0a36c122d4c3.png?x-oss-process=image/resize,h_64"
+                                    alt=""></a></div>
+                            <div class="content">
+                                <h5 class="company_name"><a href="https://edu.csdn.net/huiyiCourse/detail/819"
+                                                            target="_blank">公开课 | 思必驰NLP负责人详解启发式对话</a></h5>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img_box"><a href="http://www.tinymind.cn/articles/719?from=home1"
+                                                    target="_blank"><img
+                                    src="https://csdnimg.cn/feed/20180709/2e2ba708869c12cbe26dad82c305816d.jpg?x-oss-process=image/resize,h_64"
+                                    alt=""></a></div>
+                            <div class="content">
+                                <h5 class="company_name"><a href="http://www.tinymind.cn/articles/719?from=home1"
+                                                            target="_blank">谁说程序员不会写诗？！</a></h5>
+                                <p class="txt oneline">我不是天生诗人，但我有写词机啊</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img_box"><a href="https://blog.csdn.net/csdnnews/article/details/80971509"
+                                                    target="_blank"><img
+                                    src="https://csdnimg.cn/feed/20180710/3e1e1d928ab233fefaaba2181c184c08.png?x-oss-process=image/resize,h_64"
+                                    alt=""></a></div>
+                            <div class="content">
+                                <h5 class="company_name"><a
+                                        href="https://blog.csdn.net/csdnnews/article/details/80971509" target="_blank">弃
+                                    Java 而使用 Kotlin 的你后悔了吗？</a></h5>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img_box"><a href="https://blog.csdn.net/csdnsevenn/article/details/80971550"
+                                                    target="_blank"><img
+                                    src="https://csdnimg.cn/feed/20180710/6d0621d6284b067b201e624e9f64bf64.png?x-oss-process=image/resize,h_64"
+                                    alt=""></a></div>
+                            <div class="content">
+                                <h5 class="company_name"><a
+                                        href="https://blog.csdn.net/csdnsevenn/article/details/80971550"
+                                        target="_blank">漫画：动态规划解决扔鸡蛋问题</a></h5>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="img_box"><a
+                                    href="http://gitbook.cn/gitchat/column/5ac2f0509e924a1dc029dd84?utm_source=jr18070901"
+                                    target="_blank"><img
+                                    src="https://csdnimg.cn/feed/20180709/578a01dc200d9301d016099b820dddea.jpg?x-oss-process=image/resize,h_64"
+                                    alt=""></a></div>
+                            <div class="content">
+                                <h5 class="company_name"><a
+                                        href="http://gitbook.cn/gitchat/column/5ac2f0509e924a1dc029dd84?utm_source=jr18070901"
+                                        target="_blank">机器学习算法各个击破</a></h5>
+                                <p class="txt oneline">章华燕 · 前阿里巴巴资深算法工程师</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img_box"><a
+                                    href="http://gitbook.cn/gitchat/column/5ad56a79af8f2f35290f6535?utm_source=jr18070902"
+                                    target="_blank"><img
+                                    src="https://csdnimg.cn/feed/20180709/f31bdded520db1c888b67f6c72f01f56.jpg?x-oss-process=image/resize,h_64"
+                                    alt=""></a></div>
+                            <div class="content">
+                                <h5 class="company_name"><a
+                                        href="http://gitbook.cn/gitchat/column/5ad56a79af8f2f35290f6535?utm_source=jr18070902"
+                                        target="_blank">Python 快速入门实战教程</a></h5>
+                                <p class="txt oneline">应书澜 · 世界100强企业资深研发工程师</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img_box"><a
+                                    href="https://edu.csdn.net/huiyiCourse/series_detail/102?utm_source=home4"
+                                    target="_blank"><img
+                                    src="https://csdnimg.cn/feed/20180528/735d04c68dcf3456de0c2a44cca71890.jpg?x-oss-process=image/resize,h_64"
+                                    alt=""></a></div>
+                            <div class="content">
+                                <h5 class="company_name"><a
+                                        href="https://edu.csdn.net/huiyiCourse/series_detail/102?utm_source=home4"
+                                        target="_blank">无人驾驶技术如何入门？</a></h5>
+                                <p class="txt oneline">即便作为兴趣爱好，无人价值技术要如何入门呢？</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img_box"><a
+                                    href="https://edu.csdn.net/huiyiCourse/series_detail/108?utm_source=home4"
+                                    target="_blank"><img
+                                    src="https://csdnimg.cn/feed/20180528/cd049135386602f67799d631f520fb36.jpg?x-oss-process=image/resize,h_64"
+                                    alt=""></a></div>
+                            <div class="content">
+                                <h5 class="company_name"><a
+                                        href="https://edu.csdn.net/huiyiCourse/series_detail/108?utm_source=home4"
+                                        target="_blank">机器学习十二讲（核心算法各个击破）</a></h5>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img_box"><a href="https://bss.csdn.net/m/topic/mi_app" target="_blank"><img
+                                    src="https://csdnimg.cn/feed/20180702/0dafd2df265d50ebb3786ef63ba64389.png?x-oss-process=image/resize,h_64"
+                                    alt=""></a></div>
+                            <div class="content">
+                                <h5 class="company_name"><a href="https://bss.csdn.net/m/topic/mi_app" target="_blank">快应用赋能开发者
+                                    拓展场景未来</a></h5>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img_box"><a href="https://www.csdn.net/article/a/2018-07-06/15954268"
+                                                    target="_blank"><img
+                                    src="https://csdnimg.cn/feed/20180706/ba9d2dd9020b6669995808f3406605fa.jpg?x-oss-process=image/resize,h_64"
+                                    alt=""></a></div>
+                            <div class="content">
+                                <h5 class="company_name"><a href="https://www.csdn.net/article/a/2018-07-06/15954268"
+                                                            target="_blank">百度科学家神级rap调戏地图惊艳全场</a></h5>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img_box"><a href="http://qualcomm.csdn.net/" target="_blank"><img
+                                    src="https://csdnimg.cn/feed/20180206/481f31224e31a114adbf35cbdde4b24b.png?x-oss-process=image/resize,h_64"
+                                    alt=""></a></div>
+                            <div class="content">
+                                <h5 class="company_name"><a href="http://qualcomm.csdn.net/" target="_blank">5G标准已经完成，下一步是什么</a>
+                                </h5>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img_box"><a href="http://ibmuniversity.csdn.net/" target="_blank"><img
+                                    src="https://csdnimg.cn/feed/20180206/fef6fa64e5d526bc9bc9e1522b9d020d.png?x-oss-process=image/resize,h_64"
+                                    alt=""></a></div>
+                            <div class="content">
+                                <h5 class="company_name"><a href="http://ibmuniversity.csdn.net/" target="_blank">人工智能、机器学习和认知计算入门指南</a>
+                                </h5>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img_box"><a href="http://baidu.csdn.net/" target="_blank"><img
+                                    src="https://csdnimg.cn/feed/20180307/c38c6acf11cfe6f8d09441689eeec222.jpg?x-oss-process=image/resize,h_64"
+                                    alt=""></a></div>
+                            <div class="content">
+                                <h5 class="company_name"><a href="http://baidu.csdn.net/" target="_blank">百度技术专区</a>
+                                </h5>
+                                <p class="txt oneline">汇聚千万开发者的交流平台</p>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="other_company clearfix">
+                        <a href="http://intel.csdn.net/" target="_blank">英特尔开发人员专区</a>
+                        <a href="https://bss.csdn.net/m/topic/ucloud" target="_blank">UCan下午茶 2018</a>
+                        <a href="https://bss.csdn.net/m/topic/huawei_dynamic/index" target="_blank">华为云&nbsp;</a>
+                        <a href="http://g.csdn.net/5271587" target="_blank">腾讯云技术社区</a>
+                        <a href="http://primeton.csdn.net/" target="_blank">普元云计算</a>
+                        <a href="http://powerlinux.csdn.net/" target="_blank">PowerLinux技术社区</a>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+<!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>
